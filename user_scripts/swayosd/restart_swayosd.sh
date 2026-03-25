@@ -81,8 +81,8 @@ if command -v uwsm-app >/dev/null 2>&1; then
 
 elif command -v systemd-run >/dev/null 2>&1; then
     # Systemd: transient scope under user session
-    # Include PID + timestamp to guarantee uniqueness
-    unit_name="swayosd-$$-$(date +%s)"
+    # Include PID + timestamp to guarantee uniqueness using Bash 5.3 non-forking capture
+    unit_name="swayosd-$$-${ date +%s; }"
     systemd-run --user --scope --unit="$unit_name" \
         -- "$SERVER_BIN" >/dev/null 2>&1 &
 

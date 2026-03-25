@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Sheepy: A Short Adventure
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/1568400
-Icon=steam_icon_1568400
-Terminal=false
-Type=Application
-Categories=Game;

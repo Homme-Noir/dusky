@@ -1,3 +1,7 @@
+# Some of the commands below are wrong follow this instead
+
+![[uv.webp]]
+[[uv.webp]]
 # ⚡️ UV: A Comprehensive Guide to Blazing-Fast Python Environments
 
 Welcome to your central hub for mastering `uv`, the blazingly fast Python package installer and resolver. Written in Rust, `uv` is a modern, drop-in replacement for `pip` and `venv` that will supercharge your development workflow on Arch Linux and beyond.

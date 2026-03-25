@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Upload Labs
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/3606890
-Icon=steam_icon_3606890
-Terminal=false
-Type=Application
-Categories=Game;

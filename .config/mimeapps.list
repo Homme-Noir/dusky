@@ -44,12 +44,9 @@ audio/mpeg=mpv.desktop
 audio/ogg=mpv.desktop
 audio/wav=mpv.desktop
 application/pdf=org.pwmt.zathura.desktop
-inode/directory=thunar.desktop
+inode/directory=yazi.desktop
 application/x-zerosize=nvim.desktop
 x-scheme-handler/discord=vesktop.desktop
-x-scheme-handler/hayase=hayase.desktop
-font/ttf=uget-gtk.desktop
-x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
 
 [Added Associations]
 video/mp4=mpv.desktop;vlc.desktop;fr.handbrake.ghb.desktop;
@@ -57,5 +54,3 @@ video/x-matroska=mpv.desktop;vlc.desktop;
 text/plain=nvim.desktop;org.gnome.TextEditor.desktop;
 application/json=nvim.desktop;org.gnome.TextEditor.desktop;
 application/x-zerosize=nvim.desktop;
-application/pdf=libreoffice-draw.desktop;krita_pdf.desktop;
-font/ttf=uget-gtk.desktop;

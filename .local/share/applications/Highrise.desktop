@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Highrise
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/3474800
-Icon=steam
-Terminal=false
-Type=Application
-Categories=Game;

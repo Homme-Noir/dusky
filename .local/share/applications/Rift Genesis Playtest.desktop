@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Rift: Genesis Playtest
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/2880040
-Icon=steam
-Terminal=false
-Type=Application
-Categories=Game;

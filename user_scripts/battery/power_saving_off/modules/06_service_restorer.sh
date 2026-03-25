@@ -30,7 +30,7 @@ readonly RESET=$'\033[0m'
 #    - Runs natively as YOU. 
 #    - No environment hacking needed.
 readonly -a TARGET_PROCESSES=(
-    "hyprsunset"
+#    "hyprsunset"
     "waybar"
     "blueman-manager"
 )

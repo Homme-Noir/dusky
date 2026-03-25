@@ -3,7 +3,7 @@
 Type=Application
 Name=Scale UI Down
 Comment=Decrease display scaling
-Exec=uwsm-app -- /home/tobias_aei/user_scripts/hypr/adjust_scale.sh -
+Exec=uwsm-app -- /home/tobias_aei/user_scripts/hypr/adjust_scale.py -
 Terminal=false
 Categories=Settings;
 Icon=zoom-out

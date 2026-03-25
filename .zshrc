@@ -192,7 +192,7 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-alias cat='bat'
+#alias cat='bat'
 
 #alias for using gdu instead of ncdu
 alias ncdu='gdu'
@@ -215,6 +215,9 @@ alias git_dusky_add_list='(cd $HOME && git_dusky add --pathspec-from-file=.git_d
 # 4. Delta/Diff Alias
 alias gitdelta='git_dusky_add_list && git_dusky diff HEAD'
 
+# 5. Lazygit Bare Repo Alias
+alias lazygit_dusky='lazygit --git-dir=$HOME/dusky/ --work-tree=$HOME'
+
 # unlock block_devices
 alias unlock='$HOME/user_scripts/drives/drive_manager.sh unlock'
 
@@ -235,6 +238,11 @@ wthr() {
         curl "wttr.in/${location}"
     fi
 }
+
+
+# for troubleshoting scripts
+source ~/.config/zshrc/logs
+source ~/.config/zshrc/logs_old
 
 # share zram1 directory with waydroid at pictures point inside waydroid
 # Function to remount Waydroid pictures to ZRAM
@@ -300,9 +308,6 @@ alias run_sysbench='~/user_scripts/performance/sysbench_benchmark.sh'
 # --- nvidia vfio bind/unbind ---
 alias nvidia_bind='~/user_scripts/nvidia_passthrough/nvidia_vfio_bind_unbind.sh --bind'
 alias nvidia_unbind='~/user_scripts/nvidia_passthrough/nvidia_vfio_bind_unbind.sh --unbind'
-
-# --- ganttproject alias ---
-alias ganttproject="JAVA_HOME=/usr/lib/jvm/liberica-jdk-full /home/tobias_aei/contained_apps/GanntProject/ganttproject"
 
 #-- LM- Studio--
 llm() {
@@ -473,11 +478,6 @@ if $_fzf_bin --zsh > /dev/null 2>&1; then
       fi
   fi
 fi
-
-# --- Pyenv ---
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # --- Autosuggestions ---
 if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then

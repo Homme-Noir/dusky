@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Your Chronicle
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/1546320
-Icon=steam_icon_1546320
-Terminal=false
-Type=Application
-Categories=Game;

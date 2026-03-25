@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Awaria
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/3274300
-Icon=steam_icon_3274300
-Terminal=false
-Type=Application
-Categories=Game;

@@ -5,6 +5,7 @@
 #              Automatically handles TOS acceptance if pending.
 #              Soft-fails if WARP is not installed (prevents orchestrator errors).
 #              also supports --disconnect and --connect flags
+#              Maintains state file at ~/.config/dusky/settings/warp_state
 # Author: Elite DevOps
 # Environment: Arch Linux / Hyprland / UWSM
 # Dependencies: warp-cli, libnotify (notify-send) [optional], util-linux (script)
@@ -20,6 +21,7 @@ readonly ICON_CONN="network-vpn"
 readonly ICON_DISC="network-offline"
 readonly ICON_WAIT="network-transmit-receive"
 readonly ICON_ERR="dialog-error"
+readonly STATE_FILE="$HOME/.config/dusky/settings/warp_state"
 
 # --- Runtime Checks ---
 # Cache notify-send availability
@@ -41,6 +43,20 @@ log_info()    { printf "%s[INFO]%s %s\n" "$C_BLUE" "$C_RESET" "${1:-}"; }
 log_success() { printf "%s[OK]%s   %s\n" "$C_GREEN" "$C_RESET" "${1:-}"; }
 log_warn()    { printf "%s[WARN]%s %s\n" "$C_YELLOW" "$C_RESET" "${1:-}" >&2; }
 log_error()   { printf "%s[ERR]%s  %s\n" "$C_RED" "$C_RESET" "${1:-}" >&2; }
+
+# --- State Management ---
+update_state_file() {
+    local state="${1:-False}"
+    local dir
+    dir=$(dirname "$STATE_FILE")
+    
+    if [[ ! -d "$dir" ]]; then
+        mkdir -p "$dir"
+    fi
+    
+    # Write atomically to avoid race conditions with bar/widgets reading it
+    echo "$state" > "${STATE_FILE}.tmp" && mv "${STATE_FILE}.tmp" "$STATE_FILE"
+}
 
 # --- Notification Helper ---
 notify_user() {
@@ -109,6 +125,8 @@ wait_for_connection() {
     if ! warp-cli connect &>/dev/null; then
         log_error "Failed to send connect command."
         notify_user "Error" "Failed to send connect command." "critical" "$ICON_ERR"
+        # Ensure state reflects failure (disconnected)
+        update_state_file "False"
         return 1
     fi
 
@@ -118,6 +136,7 @@ wait_for_connection() {
         if [[ "$current_state" == "Connected" ]]; then
             log_success "WARP is now Connected."
             notify_user "Connected" "Secure tunnel active." "normal" "$ICON_CONN"
+            update_state_file "True"
             return 0
         fi
 
@@ -127,6 +146,8 @@ wait_for_connection() {
 
     log_error "Connection timed out after ${TIMEOUT_SEC}s."
     notify_user "Timeout" "Failed to connect within ${TIMEOUT_SEC} seconds." "critical" "$ICON_ERR"
+    # Ensure state reflects failure/unknown
+    update_state_file "False"
     return 1
 }
 
@@ -135,10 +156,12 @@ disconnect_warp() {
     if warp-cli disconnect &>/dev/null; then
         log_success "Disconnected successfully."
         notify_user "Disconnected" "Secure tunnel closed." "low" "$ICON_DISC"
+        update_state_file "False"
         return 0
     else
         log_error "Failed to disconnect."
         notify_user "Error" "Failed to disconnect WARP." "critical" "$ICON_ERR"
+        # We don't update state to False here because the disconnect failed
         return 1
     fi
 }
@@ -187,6 +210,8 @@ main() {
         "connect")
             if [[ "$status" == "Connected" ]]; then
                 log_success "Already Connected. No action taken."
+                # Ensure state file is synced even if no action taken
+                update_state_file "True"
             else
                 wait_for_connection
             fi
@@ -194,6 +219,8 @@ main() {
         "disconnect")
             if [[ "$status" == "Disconnected" ]]; then
                 log_success "Already Disconnected. No action taken."
+                # Ensure state file is synced even if no action taken
+                update_state_file "False"
             else
                 disconnect_warp
             fi

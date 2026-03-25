@@ -24,7 +24,7 @@ readonly RESET=$'\033[0m'
 
 # 1. Processes (Raw Binaries to pkill)
 readonly -a TARGET_PROCESSES=(
-    "hyprsunset"
+#    "hyprsunset"
     "waybar"
     "blueman-manager"
 )

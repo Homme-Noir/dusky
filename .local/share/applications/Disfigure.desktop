@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Disfigure
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/2083160
-Icon=steam_icon_2083160
-Terminal=false
-Type=Application
-Categories=Game;
