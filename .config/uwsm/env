@@ -1,0 +1,134 @@
+#!/bin/sh
+# Universal Wayland Session Manager (UWSM) - General Environment
+# Organized for Universal Hardware Support (Intel/AMD/Nvidia)
+#
+# STRUCTURE NOTE: Hardware-specific variables are commented out by default.
+# A setup script should detect the GPU and uncomment the relevant section.
+
+# -----------------------------------------------------------------------------
+# 1. SYSTEM LOCALE & KERNEL TUNING
+# -----------------------------------------------------------------------------
+#export LANG=en_US.UTF-8
+
+# CPU Threads: Dynamically set based on available cores.
+# Useful for compilation and heavy parallel tasks.
+export OMP_NUM_THREADS=$(nproc)
+
+# -----------------------------------------------------------------------------
+# 2. GUI TOOLKIT CONFIGURATION (Universal)
+# -----------------------------------------------------------------------------
+
+# --- Qt Configuration ---
+# "wayland;xcb" allows Qt apps to try Wayland first, falling back to XWayland if needed.
+# Quotes are critical to prevent the shell from interpreting the semicolon.
+export QT_QPA_PLATFORM="wayland;xcb"
+
+# Theming: Uses qt6ct/qt5ct. Ensure these are installed.
+export QT_QPA_PLATFORMTHEME=qt6ct
+# export QT_QPA_PLATFORMTHEME=qt5ct # Fallback for pure Qt5 environments
+
+# Qt Visual Tweaks
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+# if you want to override the qt theme with another theme.
+# export QT_STYLE_OVERRIDE=
+
+# --- GTK Configuration ---
+# Prioritize Wayland, fall back to X11.
+export GDK_BACKEND="wayland,x11"
+export QT_QUICK_CONTROLS_STYLE=Fusion
+
+# --- Java Configuration ---
+# Fixes blank screens/rendering issues in tiling WMs (Java AWT).
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# --- Electron Configuration ---
+# Modern Electron apps (VSCode, Discord, Obsidian) generally auto-negotiate.
+# If apps flicker, forcing "wayland" here in a hardware-specific block might be needed.
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+# -----------------------------------------------------------------------------
+# 3. APPS & DEFAULT PREFERENCES
+# -----------------------------------------------------------------------------
+export XCURSOR_THEME=Bibata-Modern-Classic
+export XCURSOR_SIZE=18 # Standardized to 24 (18 is very small for high DPI, adjust if needed)
+
+export TERMINAL=kitty
+export EDITOR=nvim
+export VISUAL=nvim
+
+# -----------------------------------------------------------------------------
+# 4. APP SPECIFIC FLAGS
+# -----------------------------------------------------------------------------
+export MOZ_ENABLE_WAYLAND=1
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+
+# Clipboard Persistence
+# Commented out: Ephemeral clipboard (resets on reboot).
+# Uncommented: Persistent clipboard.
+# export CLIPHIST_DB_PATH="${XDG_RUNTIME_DIR}/cliphist.db"
+
+# -----------------------------------------------------------------------------
+# 5. HARDWARE ACCELERATION & DRIVERS (The "Scripting Zone")
+# -----------------------------------------------------------------------------
+# NOTE: Your script should uncomment ONE of the sections below based on detection.
+# if for some reason your hardware is not auto detected, or you use two gpus,
+# you can comment/uncomment the following blocks manually.
+
+# ### HARDWARE: INTEL ###
+# # Force Intel media driver for VA-API (Video Decode/Encode)
+# export LIBVA_DRIVER_NAME=iHD
+
+# ### HARDWARE: AMD ###
+# # AMD uses the Mesa radeonsi driver
+# # export LIBVA_DRIVER_NAME=radeonsi
+
+# ### HARDWARE: NVIDIA ###
+# # -------------------------------------------------
+# # Critical NVIDIA Drivers
+# # export LIBVA_DRIVER_NAME=nvidia
+# # export __GLX_VENDOR_LIBRARY_NAME=nvidia
+#
+# # Firefox/Mozilla Hardware Acceleration Fixes
+# # export MOZ_DISABLE_RDD_SANDBOX=1
+# # export NVD_BACKEND=direct
+#
+# # GBM Backend (Often auto-detected, but explicit setting helps some compositors)
+# # export GBM_BACKEND=nvidia-drm
+#
+# # Vulkan Optimizations
+# # export __VK_LAYER_NV_optimus=NVIDIA_only
+#
+# # Adaptive Sync (VRR) - Set to 0 if games flicker
+# # export __GL_VRR_ALLOWED=1
+#
+# # Shader Cache (Reduces stuttering)
+# # export __GL_SHADER_DISK_CACHE=1
+# # export __GL_SHADER_DISK_CACHE_PATH=$HOME/.cache/nv/
+#
+# # Cursor Hardware Fix (Uncomment if cursor disappears/glitches)
+# # export WLR_NO_HARDWARE_CURSORS=1
+# # -------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# 6. VIRTUALIZATION
+# -----------------------------------------------------------------------------
+# Connects to system-wide libvirt instance by default.
+export LIBVIRT_DEFAULT_URI='qemu:///system'
+
+
+# -----------------------------------------------------------------------------
+# 7. Do not Touch unless you know what you're doing.
+# -----------------------------------------------------------------------------
+# --- Vulkan ICD Loader ---
+# For a hybrid graphics system, you should NOT set this variable globally.
+# Doing so would restrict all Vulkan applications to a single GPU, defeating the
+# purpose of PRIME offloading. Let the Vulkan loader detect both drivers.
+# export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
+
+
+# Enables PRIME Render Offload, allowing you to run specific applications
+# on the NVIDIA GPU while the desktop session runs on the Intel iGPU.
+#export __NV_PRIME_RENDER_OFFLOAD=1

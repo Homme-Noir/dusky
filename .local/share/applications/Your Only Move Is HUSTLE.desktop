@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Your Only Move Is HUSTLE
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2212330
+Icon=steam_icon_2212330
+Terminal=false
+Type=Application
+Categories=Game;

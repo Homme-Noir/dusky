@@ -1,0 +1,50 @@
+#!/bin/sh
+# Universal Wayland Session Manager (UWSM) - Hyprland Specifics
+# These variables override global settings specifically for Hyprland sessions.
+
+# -----------------------------------------------------------------------------
+# 1. SESSION IDENTIFICATION
+# -----------------------------------------------------------------------------
+export DESKTOP_SESSION=hyprland-uwsm
+
+# UWSM automatically handles:
+# XDG_CURRENT_DESKTOP, XDG_SESSION_TYPE, XDG_SESSION_DESKTOP
+
+# -----------------------------------------------------------------------------
+# 2. HYPRLAND VISUALS
+# -----------------------------------------------------------------------------
+# Cursor size specifically for Hyprland's internal rendering
+export HYPRCURSOR_SIZE=18
+
+# -----------------------------------------------------------------------------
+# 3. RENDERING ENGINE (AQUAMARINE)
+# -----------------------------------------------------------------------------
+# Hyprland v0.42+ uses Aquamarine (AQ) instead of WLROOTS.
+
+# !!! CRITICAL GPU SELECTION !!!
+# This forces Hyprland to run on a specific card.
+# Hardcoding 'card1' will CRASH single-GPU systems (which use card0).
+
+# Your script should detect the iGPU (Integrated) and dGPU (Discrete).
+# For laptops: Usually iGPU is the best choice for the compositor (window manager),
+# allowing the dGPU to sleep.
+#
+# export AQ_DRM_DEVICES=/dev/dri/card1
+
+# Legacy/Backup variable (Restored from your config)
+# This is the old wlroots equivalent of AQ_DRM_DEVICES.
+# export WLR_DRM_DEVICES=/dev/dri/card1
+
+# -----------------------------------------------------------------------------
+# 4. PATH & UTILITIES
+# -----------------------------------------------------------------------------
+# Organized to prevent duplicates.
+# Priority: Local Bin -> Cargo Bin -> System Path
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+# -----------------------------------------------------------------------------
+# 5. TERMINAL OVERRIDE
+# -----------------------------------------------------------------------------
+# While 'env' sets kitty, Hyprland prefers xdg-terminal-exec for standard integration.
+export TERMINAL=xdg-terminal-exec

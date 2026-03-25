@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bitburner
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1812820
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Game;

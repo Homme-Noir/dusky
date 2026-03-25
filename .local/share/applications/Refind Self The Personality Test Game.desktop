@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Refind Self: The Personality Test Game
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2514960
+Icon=steam_icon_2514960
+Terminal=false
+Type=Application
+Categories=Game;

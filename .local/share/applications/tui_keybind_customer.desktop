@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Hypr Keybind Manager
+GenericName=Keybind Editor
+Comment=Advanced TUI for managing Hyprland keybinds with conflict resolution
+Exec=uwsm-app -- kitty --hold --class tui_keybinds_custom.sh -e /home/tobias_aei/user_scripts/hypr/tui_keybinds_custom.sh
+Icon=preferences-desktop-keyboard
+Terminal=false
+Categories=System;Settings;Utility;
+Keywords=hyprland;keybinds;config;tui;bind;shortcut;
+StartupNotify=true

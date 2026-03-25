@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Unnamed Space Idle
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2471100
+Icon=steam_icon_2471100
+Terminal=false
+Type=Application
+Categories=Game;

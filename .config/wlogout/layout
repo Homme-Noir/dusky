@@ -1,0 +1,36 @@
+{
+    "label": "lock",
+    "action": "$HOME/user_scripts/hyprlock/lock.sh",
+    "text": "Lock",
+    "keybind": "l"
+}
+{
+    "label": "logout",
+    "action": "uwsm stop",
+    "text": "Logout",
+    "keybind": "e"
+}
+{
+    "label": "suspend",
+    "action": "systemctl suspend",
+    "text": "Suspend",
+    "keybind": "u"
+}
+{
+    "label": "shutdown",
+    "action": "systemctl poweroff",
+    "text": "Shutdown",
+    "keybind": "s"
+}
+{
+    "label": "soft-reboot",
+    "action": "systemctl soft-reboot",
+    "text": "Soft-Reboot",
+    "keybind": "q"
+}
+{
+    "label": "reboot",
+    "action": "systemctl reboot",
+    "text": "Reboot",
+    "keybind": "r"
+}

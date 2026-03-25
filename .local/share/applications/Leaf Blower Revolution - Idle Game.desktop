@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Leaf Blower Revolution - Idle Game
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1468260
+Icon=steam_icon_1468260
+Terminal=false
+Type=Application
+Categories=Game;

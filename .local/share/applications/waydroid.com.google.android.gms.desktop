@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=microG Services Core
+Exec=waydroid app launch com.google.android.gms
+Icon=/home/tobias_aei/.local/share/waydroid/data/icons/com.google.android.gms.png
+Categories=X-WayDroid-App;
+X-Purism-FormFactor=Workstation;Mobile;
+Actions=app-settings;
+NoDisplay=true
+
+[Desktop Action app-settings]
+Name=App Settings
+Exec=waydroid app intent android.settings.APPLICATION_DETAILS_SETTINGS package:com.google.android.gms
+Icon=/home/tobias_aei/.local/share/waydroid/data/icons/com.android.settings.png

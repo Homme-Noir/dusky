@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Windrose Demo
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/4291770
+Icon=steam_icon_4291770
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BAKUDO: Boss Rush Demo
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/4386300
+Icon=steam_icon_4386300
+Terminal=false
+Type=Application
+Categories=Game;

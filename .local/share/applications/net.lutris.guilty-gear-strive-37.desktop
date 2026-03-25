@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Name=Guilty Gear Strive
+Icon=lutris_guilty-gear-strive
+Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/37
+Categories=Game
+TryExec=lutris
