@@ -1,0 +1,11 @@
+#-- LM- Studio--
+llm() {
+    /mnt/media/Documents/do_not_delete_linux/appimages/LM-Studio*(om[1]) "$@"
+}
+# The (om[1]) glob qualifier picks the most recently modified file (newest first)
+
+# --- Functions ---
+# Creates a directory and changes into it.
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
