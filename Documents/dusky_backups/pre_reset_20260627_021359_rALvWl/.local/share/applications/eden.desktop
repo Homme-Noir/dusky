@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Eden
+Exec=/home/tobias_aei/contained_apps/Eden-Linux-v0.2.0-rc2-amd64-clang-pgo.AppImage
+Type=Application
+Categories=Game;
+StartupWMClass=eden
+X-Flatpak-RenamedFrom=dev.eden_emu.eden

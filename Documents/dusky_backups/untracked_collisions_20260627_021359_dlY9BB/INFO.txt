@@ -1,0 +1,4 @@
+Dusky work-tree collision backup
+Created: 20260627_021359
+Reference: refs/dusky-updater/upstream/main
+Work tree: /home/tobias_aei

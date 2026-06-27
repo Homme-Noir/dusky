@@ -131,13 +131,13 @@ post_hook   = '''
   touch "$HOME/.config/zellij/config.kdl" || :
 '''
 
-# [templates.opencode]
-# input_path  = '~/.config/matugen/templates/opencode-colors.json'
-# output_path = '~/.config/matugen/generated/opencode.json'
-# post_hook   = '''
-#   ln -nfs "$HOME/.config/matugen/generated/opencode.json" "$HOME/.config/opencode/themes/matugen.json"
-#   pkill -SIGUSR1 -x kitty || :
-# '''
+[templates.opencode]
+input_path  = '~/.config/matugen/templates/opencode-colors.json'
+output_path = '~/.config/matugen/generated/opencode.json'
+post_hook   = '''
+  ln -nfs "$HOME/.config/matugen/generated/opencode.json" "$HOME/.config/opencode/themes/matugen.json"
+  pkill -SIGUSR1 -x kitty || :
+'''
 
 # [templates.vscode]
 # input_path  = '~/.config/matugen/templates/vscode.json'
@@ -241,16 +241,16 @@ post_hook   = '''
 #   fi
 # '''
 
-# [templates.spicetify]
-# input_path  = '~/.config/matugen/templates/spotify-colors.ini'
-# output_path = '~/.config/matugen/generated/spotify-colors.ini'
-# post_hook   = '''
-#   if command -v spicetify >/dev/null 2>&1 && [ -d "$HOME/.config/spicetify/Themes/Comfy" ]; then
-#       ln -nfs "$HOME/.config/matugen/generated/spotify-colors.ini" "$HOME/.config/spicetify/Themes/Comfy/color.ini"
-#       spicetify apply -n || :
-#       hyprctl dispatch sendshortcut "CTRL_SHIFT, R, class:^(Spotify)$" || :
-#   fi
-# '''
+[templates.spicetify]
+input_path  = '~/.config/matugen/templates/spotify-colors.ini'
+output_path = '~/.config/matugen/generated/spotify-colors.ini'
+post_hook   = '''
+  if command -v spicetify >/dev/null 2>&1 && [ -d "$HOME/.config/spicetify/Themes/Comfy" ]; then
+      ln -nfs "$HOME/.config/matugen/generated/spotify-colors.ini" "$HOME/.config/spicetify/Themes/Comfy/color.ini"
+      spicetify apply -n || :
+      hyprctl dispatch sendshortcut "CTRL_SHIFT, R, class:^(Spotify)$" || :
+  fi
+'''
 
 # [templates.steam]
 # input_path  = '~/.config/matugen/templates/steam.css'
@@ -283,13 +283,13 @@ post_hook   = '''
   fi
 '''
 
-# [templates.firefox_websites]
-# input_path = '~/.config/matugen/templates/firefox_websites.css'
-# output_path = '~/.config/matugen/generated/firefox_websites.css'
-# post_hook = '''
-#     ln -nfs "$HOME/.config/matugen/generated/firefox_websites.css" "$HOME/.config/mozilla/firefox/sw8xyz71.default/chrome/colors.css" || :
-#     ln -nfs "$HOME/.config/matugen/generated/firefox_websites.css" "$HOME/.config/mozilla/firefox/fq2df6j4.default-release/chrome/colors.css" || :
-# '''
+[templates.firefox_websites]
+input_path = '~/.config/matugen/templates/firefox_websites.css'
+output_path = '~/.config/matugen/generated/firefox_websites.css'
+post_hook = '''
+    ln -nfs "$HOME/.config/matugen/generated/firefox_websites.css" "$HOME/.config/mozilla/firefox/sw8xyz71.default/chrome/colors.css" || :
+    ln -nfs "$HOME/.config/matugen/generated/firefox_websites.css" "$HOME/.config/mozilla/firefox/fq2df6j4.default-release/chrome/colors.css" || :
+'''
 
 #=============================================================================
 # 4. System Services & Daemons (Triggered on theme change )

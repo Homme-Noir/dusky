@@ -1,0 +1,10 @@
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/build/dark.json
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/build/extension.js
+.config/xdg-desktop-portal/hyprland-portals.conf
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/readme.md
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/build/inject.css
+.vscode-oss/extensions/extensions.json
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/icon.png
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/build/inject.js
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/build/light.json
+.vscode-oss/extensions/rakib13332.material-code-3.1.1/package.json
